@@ -5,4 +5,13 @@
 '''
 Implementación de un nuevo método de filtrado
 '''
-import numpy as np
+
+# importamos
+import scipy as sp
+
+'''
+Leemos los archivos .mat para trabajar con ellos como array de scipy
+'''
+
+allconduct = sp.io.loadmat('allConduct.mat')
+alldisplace = sp.io.loadmat('allDisplace.mat')
