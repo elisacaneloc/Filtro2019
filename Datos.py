@@ -20,7 +20,6 @@ cali = 0.02
 curve = sp.io.loadmat('curves.mat')
 curve_cell = curve['curva_cell']
 
-
 '''
 Juntamos todos los y de todas las trazas en una sola lista de python
 se puede acceder a cada traza como en una lista.
@@ -47,3 +46,8 @@ for i in range(0,trazas):
 
 # renombramos todos_y como allConduct
 allConduct = todos_y
+
+allDisplace = []
+for i in range(len(todos_x):
+    displace = todos_x[i]*2
+    allDisplace.append(displace)
