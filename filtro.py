@@ -90,3 +90,20 @@ def reducir(D_i,C_i):
         y_data_quiero[i] = data_quiero[i][1]
     return x_data_quiero, y_data_quiero
 
+
+def cdf(data, model):
+    return np.array([np.sum(model <= yy) for yy in data]) / len(model)
+
+def un_filtro(x_data, y_data, model, cdf):
+    # Se encuentra mejor fit
+    a_opt, a_covar = curve_fit(model, x_data, y_data, (1,1,1,1)):
+    # Se crean parametros necesarios para realizar kstest con la libreria de sc
+    y_data_sorted = np.sort(y_data) # se ordenan las conductancias
+    # se obtene minimo y max de los desplazamientos
+    xmin = np.min(x_data_quiero)
+    xmax = np.max(x_data_quiero)
+    # se crean datos desde el modelo con los argumentos obtimos obtenidos
+    y_model_sorted = np.sort(model(np.linspace(xmin, xmax, 1000), *a_opt))
+    # Se realiza kstest
+    Dn_scipy, prob_scipy = kstest(y_data_sorted, cdf, args=(y_model_sorted,))
+    return Dn_scipy, prob_scipy, a_opt
