@@ -11,5 +11,6 @@ from scipy.stats import kstest
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
-
+def model(x,a,b,c,d):
+    return a*np.exp(-x*b + d) + c
 
